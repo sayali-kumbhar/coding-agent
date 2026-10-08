@@ -1008,21 +1008,7 @@ python --version
 
 ---
 
-# 18. Clone the Repository
-
-git clone <YOUR_GITHUB_REPOSITORY_URL>
-cd coding-agent
-
-
-Replace:
-
-<YOUR_GITHUB_REPOSITORY_URL>
-
-with the actual GitHub repository URL.
-
----
-
-# 19. Create Virtual Environment
+# 18. Create Virtual Environment
 
 ### Windows
 
@@ -1043,7 +1029,7 @@ source .venv/bin/activate
 
 ---
 
-# 20. Install Dependencies
+# 19. Install Dependencies
 
 Install the required packages:
 
@@ -1058,7 +1044,7 @@ pytest
 
 ---
 
-# 21. Configure Groq API Key
+# 20. Configure Groq API Key
 
 Create a `.env` file in the project root:
 
@@ -1068,7 +1054,7 @@ GROQ_MODEL=openai/gpt-oss-120b
 
 ---
 
-# 22. Run Locally
+# 21. Run Locally
 
 Start the Streamlit application:
 
@@ -1083,7 +1069,7 @@ Open that URL in the browser.
 
 ---
 
-# 23. Running the Application
+# 22. Running the Application
 
 Once the UI opens:
 
@@ -1135,7 +1121,7 @@ coding-agent-result.zip
 
 ---
 
-# 24. Uploading Another Project
+# 23. Uploading Another Project
 
 The application also supports user projects.
 
@@ -1160,7 +1146,7 @@ The uploaded project is processed in a temporary workspace.
 
 ---
 
-# 25. Deployment — Streamlit Community Cloud
+# 24. Deployment — Streamlit Community Cloud
 
 The application can be deployed using Streamlit Community Cloud.
 
@@ -1221,7 +1207,7 @@ Add the final deployed URL to the submission information section below.
 
 ---
 
-# 26. Environment Variables
+# 25. Environment Variables
 
 ## Local
 
@@ -1242,7 +1228,7 @@ GROQ_MODEL = "openai/gpt-oss-120b"
 
 ---
 
-# 27. Error Handling
+# 26. Error Handling
 
 The application handles common failures such as:
 
@@ -1263,7 +1249,7 @@ The application reports actual validation output rather than hiding errors behin
 
 ---
 
-# 28. Important Safety Design
+# 27. Important Safety Design
 
 The application uses a temporary workspace for coding operations.
 
@@ -1290,7 +1276,7 @@ This is especially useful when evaluating LLM-generated changes.
 
 ---
 
-# 29. Agentic Design
+# 28. Agentic Design
 
 Although the application does not depend on a large autonomous framework, it follows an agent-style workflow.
 
@@ -1318,7 +1304,7 @@ This is preferable to sending the entire project to one LLM call and asking the 
 
 ---
 
-# 30. Why the Planner and Implementation Stages Are Separate
+# 29. Why the Planner and Implementation Stages Are Separate
 
 The planner and implementation stages are intentionally separated.
 
@@ -1341,7 +1327,7 @@ This separation provides better control over the generated changes and makes the
 
 ---
 
-# 31. Why Baseline Testing Is Important
+# 30. Why Baseline Testing Is Important
 
 Without a baseline, an AI coding agent could accidentally remove existing functionality or tests and then report success because a smaller test suite passes.
 
@@ -1361,7 +1347,7 @@ The final validation checks that the agent did not simply eliminate the existing
 
 ---
 
-# 32. Why Temporary Workspaces Are Used
+# 31. Why Temporary Workspaces Are Used
 
 The coding agent performs operations such as:
 
@@ -1381,7 +1367,7 @@ Benefits include:
 
 ---
 
-# 33. Testing the Coding Agent
+# 32. Testing the Coding Agent
 
 Recommended manual scenarios:
 
@@ -1454,7 +1440,7 @@ No project modification
 
 ---
 
-# 34. Assumptions
+# 33. Assumptions
 
 The project makes the following assumptions:
 
@@ -1467,7 +1453,7 @@ The project makes the following assumptions:
 
 ---
 
-# 35. Limitations
+# 34. Limitations
 
 ## LLM dependency
 
@@ -1528,7 +1514,7 @@ Large repositories may require additional indexing or retrieval strategies in a 
 
 ---
 
-# 36. Future Improvements
+# 35. Future Improvements
 
 Possible improvements for a production-grade version include:
 
@@ -1552,7 +1538,7 @@ Possible improvements for a production-grade version include:
 
 ---
 
-# 37. Design Principles
+# 36. Design Principles
 
 The project follows several principles:
 
@@ -1591,7 +1577,7 @@ Final status
 
 ---
 
-# 38. End-to-End Example
+# 37. End-to-End Example
 
 A complete example looks like this:
 
@@ -1661,15 +1647,15 @@ Download modified ZIP
 
 ## Deployed Application
 
-<YOUR_STREAMLIT_DEPLOYED_URL>
+[<YOUR_STREAMLIT_DEPLOYED_URL>](https://basic-coding-agent.streamlit.app/)
 
 ## GitHub Repository
 
-<YOUR_GITHUB_REPOSITORY_URL>
+[<YOUR_GITHUB_REPOSITORY_URL>](https://github.com/sayali-kumbhar/coding-agent)
 
 ---
 
-# 40. Brief Approach Explanation
+# 38. Brief Approach Explanation
 
 The application uses a staged LLM-driven coding workflow.
 
@@ -1685,4 +1671,92 @@ This architecture keeps the project small while demonstrating a complete coding-
 
 ---
 
+## 🧪 Try the Agent with a Sample Project
+
+Download the tested sample project:
+
+[Download Mini Shop Test Project](https://github.com/sayali-kumbhar/coding-agent/blob/main/sample_project/mini-shop-coding-agent-test.zip)
+
+After downloading:
+
+1. Open the deployed AI Coding Agent.
+2. Select **Upload ZIP**.
+3. Upload `mini_shop_test.zip`.
+4. Try a coding task such as:
+
+> Add a test for the 100% discount case and make sure all existing tests continue to pass.
+
+The agent will inspect the project, create a plan, make the requested change, run validation, and display the resulting diff.
+## 🧪 Example Scenarios
+
+### 1. Add a New Feature
+
+**Task:**
+> Add a test for the 100% discount case and make sure all existing tests continue to pass.
+
+**Agent demonstrates:**
+- Understands the request
+- Identifies relevant files
+- Creates a plan
+- Updates the implementation/tests
+- Runs validation
+- Shows the final diff
+
+---
+
+### 2. Refactoring
+
+**Task:**
+> Refactor the pricing calculation to improve readability without changing its behavior.
+
+**Agent demonstrates:**
+- Identifies the relevant implementation file
+- Makes a focused code change
+- Preserves existing behavior
+- Runs the existing test suite
+- Shows changed files and diff
+
+---
+
+### 3. Read-Only Repository Analysis
+
+**Task:**
+> Inspect this repository and explain its architecture, tests, dependencies, and possible issues. Do not modify or create any files.
+
+**Agent demonstrates:**
+- Repository inspection
+- Multi-file analysis
+- Architecture explanation
+- Test/dependency review
+- No project modifications
+
+---
+
+### 4. Validation Failure and Repair
+
+**Task:**
+> Make the requested change and ensure the test suite passes.
+
+When the generated change causes a test failure, the agent uses the actual test output to attempt a bounded repair and then runs validation again.
+
+**Agent demonstrates:**
+- Test-driven validation
+- Failure detection
+- Repair loop
+- Final verification
+
+---
+
+### 5. Dependency Safety
+
+**Task:**
+> Add and use a dependency that is not currently declared in the project.
+
+The agent identifies that the dependency is not declared instead of creating a fake local package or silently replacing it.
+
+**Agent demonstrates:**
+- Dependency awareness
+- Safe handling of missing dependencies
+- Protection against fake package creation
+- No unsafe project modification
 
